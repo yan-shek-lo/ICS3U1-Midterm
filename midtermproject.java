@@ -79,7 +79,7 @@ public class midtermproject{
 		BufferedImage imgSchool = con.loadImage("school.png");
 		int intSpongebobX;
 		intSpongebobX = 700;
-		con.repaint();
+		con.clear();
 		con.drawImage(imgCountryside, 0,0);
 		con.drawImage(imgSchool, 0,0);
 		while(intSpongebobX<=1500){
@@ -91,68 +91,171 @@ public class midtermproject{
 	}	
 	public static void scene3(Console con){
 		//Mr. Krab asks for player name 
+		
 	}
 	public static void scene4(Console con){
 		//Spongebob is in chemistry, Patrick explains two labs that player can choose from
 		//Lab 1: Drop sodium metal in water
 		//Lab 2: Mix sodium hydroxide and copper (II) sulfate
+		con.clear();
+		char chrChemLab;
+		con.drawString("Lab 1: drop sodium metal into water",1300,600);
+		con.drawString("Lab 2: mix sodium hydroxide and copper (II) sulfate",1300,580);
+		con.println("What lab do you want to do");
+		con.println("Enter 'a' for lab 1 and 'b' for lab 2");
+		chrChemLab= con.getChar();
+		if(chrChemLab=='a'){
+			scene5(con);
+		}
+		else if(chrChemLab=='b'){
+			scene6(con);
+		}
+			
+
+		
 	}
 	public static void scene5(Console con){
 		//Spongebob drops sodium metal in water and it explodes 
 		//Patrick says it is unsafe, and player does not pass the lab
+		con.drawString("That is unsafe!",1300,600);
+		con.println("You did not pass the lab");
 		
 	}
 	public static void scene6(Console con){
 		//Spongebob mixes copper (II) sulfate and sodium hydroxide, forming a new solid
 		//Patrick asks Spongebob what was produced
+		String strChemicalFormula;
+		con.println("A new solid is generated!");
+		con.drawString("What solid was produced?",1300,600);
+		con.println("Enter the chemical formula of the solid produced.");
+		strChemicalFormula = con.readLine();
+		if(strChemicalFormula.equals("Cu(OH)2")){
+			scene8(con);
+		}else{
+			scene7(con);
+		}
 	}
 	public static void scene7(Console con){
 		//Patrick tells Spongebob he got the chemical formula wrong
 		//Player does not pass the lab
+		con.drawString("Wrong chemical formula!",1300,600);
+		con.println("You did not pass the lab");
 	}
 	public static void scene8(Console con){
 		//Patrick says the chemical formula is correct, Spongebob measures the mass
 		//Patrick asks for the mass measured in grams 
+		con.clear();
+		double dblMass;
+		double dblAmount;
+		con.drawString("Correct!",1300,600);
+		con.drawString("What is the mass of the precipitate",1300,580);
+		con.println("Enter the mass");
+		dblMass = con.readDouble();
+		dblAmount = dblMass/97.57;
+		con.println("The amount is "+dblAmount+"mol");
 		
 	}
 	public static void scene9(Console con){
 		//Patrick calculates and says the amount produced 
 		//Generates a random % yield
+		con.clear();
+		int intYield;
+	
+		con.drawString("What is the % yield",1300,600);
+		intYield = (int)(Math.random()*100);
+		con.println("You % yield is "+intYield+"%");
+		if(intYield<50){
+			scene10(con);
+		}else{
+			scene11(con);
+		}
 	}
 	public static void scene10(Console con){
 		//Patrick says the % yield is bad
 		//Player does not plass lab
+		con.clear();
+		con.println("You did not pass the lab");
+		con.drawString("Your % yield was bad!",1300,600);
 		
 	}
 	public static void scene11(Console con){
 		//Patrick says % yield was good 
 		//Player gets thirsty and wants to drink sodium hydroxide 
-		
+		String strDrink;
+		con.clear();
+		con.drawString("Your % yield was good!",1300,600);
+		con.println("You are thirsty and you want to drink sodium hydroxide");
+		con.println("Enter 'yes' to drink and 'no' to not drink");
+		strDrink = con.readLine();
+		if(strDrink.equalsIgnoreCase("yes")){
+			scene12(con);
+		}else if(strDrink.equalsIgnoreCase("no")){
+			scene13(con);
+		}else{
+			con.println("Enter 'yes' to drink and 'no' to not drink");
+			strDrink = con.readLine();
+		}
+			
 	}
 	public static void scene12(Console con){
 		//Player drinks sodium hydroxide and gets poisoned
 		//Patrick says it is unsafe and the player does not pass lab
+		con.clear();
+		con.println("The sodium hydroxide poisoned you!");
+		con.println("You did not pass the lab!");
+		
 	}
 	public static void scene13(Console con){
 		//Patrick congratulates player for not drinking sodium hydroxide 
 		//Player passes lab with 100%
+		con.clear();
+		con.println("You passed the lab with 100%!");
+		con.drawString("You should never drink in labs!",1300,600);
 	}
 	public static void scene14(Console con){
 		//Spongebob enters Squidward's physics class and Squidward explains two labs the player can choose from 
 		//Lab 1: drop a 100g ball 1m 
 		//Lab 2: drop a 100kg ball 1m 
+		int intPhyLab;
+		con.drawString("Lab 1: drop 100kg ball 1m",1300,600);
+		con.drawString("Lab 2: drop",1300,580);
+		con.println("What lab do you want to do");
+		con.println("Enter '1' for lab 1 and '2' for lab 2");
+		intPhyLab = con.readInt();
 	}
 	public static void scene15(Console con){
 		//Spongebob drops the 100kg ball 1m and it breaks
 		//Squidward says it is unsafe and player does not pass lab
 		
+		con.println("The 100kg ball is very heavy and you drop it on your foot!");
+		con.drawString("That is unsafe!",1300,600);
+		con.println("You did not pass the lab.");
 	}
 	public static void scene16(Console con){
 		//Spongebob drops the 100g ball 1m and measures the time for 5 trials 
 		//Squidward explains the formula for calculating acceleration 
+		con.clear();
+		int intCount;
+		intCount = 1;
+		double dblTime;
+		double dblTimeAvg;
+		dblTimeAvg = 0;
+		double dblAcceleration;
+		double dblAccelerationRounded;
+		con.println("You measure the time it takes for the ball to fall 1m for 5 trials.");
+		con.drawString("d = vit + 1/2at^2, and we want acceleration",1300,600);
+		while(intCount<=5){
+			con.println("Enter the time (s)");
+			dblTime = con.readDouble();
+			dblTimeAvg = dblTimeAvg + dblTime;
+			intCount = intCount+1;
+		}
+		dblAcceleration = 2/Math.pow((dblTimeAvg/5),2);
+		dblAccelerationRounded = Math.round(dblAcceleration);
+		con.clear();
+		con.println("The acceleration is "+dblAccelerationRounded+"m/s^2");
 	}
 	public static void scene17(Console con){
-		//Squidward calculates the acceleration from the average of 5 trials, and puts it on the board
 		//Squidward asks Spongebob for % error
 		
 	}
