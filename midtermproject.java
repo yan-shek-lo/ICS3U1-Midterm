@@ -6,53 +6,21 @@ import java.awt.Font;
 public class midtermproject{
 	public static void main(String[]args){
 		Console con = new Console("Krusty Krab University", 1280, 720);	
+		Font fntOswald = con.loadFont("Oswald-Bold.ttf",14);
+		con.setDrawFont(fntOswald);
+		scene1(con);
+
+	}
+	public static void scene1(Console con){
+		//Spongebob (player) goes to Krusty Krab University
 		String strChoice;
 		strChoice = "";
-		Font fntOswald = con.loadFont("Oswald-Bold.ttf",40);
-		con.setDrawFont(fntOswald);
 		int intMouseX;
 		intMouseX = 0;
 		int intMouseY;
 		intMouseY = 0;
 		int intCurrentMouseClicked;
-		
-		//scene 1
-		scene1(con);
-		while(!strChoice.equals("true")||!strChoice.equals("false")){
-			intMouseX = con.currentMouseX();
-			intMouseY = con.currentMouseY();
-			intCurrentMouseClicked = con.currentMouseButton();
-			
-			if((((intMouseX >= 10) && (intMouseX <= 210)) && ((intMouseY >= 10) && (intMouseY <= 110))) && (intCurrentMouseClicked == 1)){
-				//mouse button yes 
-				strChoice = "true";
-				
-			}else if((((intMouseX >= 1010)&&(intMouseX<= 1210)) &&((intMouseY >=10)&&(intMouseY <=110)))&&(intCurrentMouseClicked == 1)){
-				//mouse clicks no
-				strChoice = "false";
-			}
-			if(strChoice.equals("true")){
-				scene3(con);
-				String strName;
-				String strLetter;
-				con.println("What is your name");
-				strName = con.readLine();
-				strLetter = strName.substring(0,1);
-				if(strLetter.equalsIgnoreCase("a")||strLetter.equalsIgnoreCase("b")||strLetter.equalsIgnoreCase("c")||strLetter.equalsIgnoreCase("d")||strLetter.equalsIgnoreCase("e")||strLetter.equalsIgnoreCase("f")||strLetter.equalsIgnoreCase("g")||strLetter.equalsIgnoreCase("h")||strLetter.equalsIgnoreCase("i")||strLetter.equalsIgnoreCase("j")||strLetter.equalsIgnoreCase("k")||strLetter.equalsIgnoreCase("l")){
-					scene4(con);
-					
-				}else{
-					scene14(con);
-				}
-			}else if(strChoice.equals("false")){
-				scene2(con);
-				con.println("You leave Krusty Krab University.");
-			}
-		
-		}
-	}
-	public static void scene1(Console con){
-		//Spongebob (player) goes to Krusty Krab University
+		con.setTextColor(Color.WHITE);
 		con.println("Welcome to Krusty Krab University!");
 		con.println("Click yes to enter and no to quit.");
 		BufferedImage imgCountryside = con.loadImage("countryside.jpeg");
@@ -62,18 +30,39 @@ public class midtermproject{
 		int intSpongebobX;
 		BufferedImage imgSpongebob = con.loadImage("spongebob.png");
 		for(intSpongebobX =1500; intSpongebobX >=700; intSpongebobX--){
+			con.drawImage(imgCountryside, 0,0);
+			con.drawImage(imgSchool, 0,0);
 			con.drawImage(imgSpongebob,intSpongebobX, 100);
 			con.repaint();
-			con.sleep(10);
+			con.sleep(5);
 		}
 		con.repaint();
 		con.setDrawColor(Color.BLACK);
-		con.fillRect(10,10,200,100);
-		con.fillRect(1010,10,200,100);
+		con.fillRect(10,100,200,100);
+		con.fillRect(1010,100,200,100);
+		con.setDrawColor(Color.WHITE);
+		con.drawString("  yes  ",10,100);
+		con.drawString("  no   ",1010,100);
+		while(!strChoice.equals("true")||!strChoice.equals("false")){
+			intMouseX = con.currentMouseX();
+			intMouseY = con.currentMouseY();
+			intCurrentMouseClicked = con.currentMouseButton();
+			if((((intMouseX >= 10) && (intMouseX <= 210)) && ((intMouseY >= 100) && (intMouseY <= 200))) && (intCurrentMouseClicked == 1)){
+				//mouse button yes 
+				strChoice = "true";
+				scene3(con);
+			}else if((((intMouseX >= 1010)&&(intMouseX<= 1210)) &&((intMouseY >=100)&&(intMouseY <=200)))&&(intCurrentMouseClicked == 1)){
+				//mouse clicks no
+				strChoice = "false";
+				scene2(con);
+			}
+		}
 		
 	}
 	public static void scene2(Console con){
 		//Spongebob leaves Krusty Krab University
+		BufferedImage imgBlack = con.loadImage("black.jpg");
+		con.drawImage(imgBlack,0,0);
 		BufferedImage imgSpongebob = con.loadImage("spongebob.png");
 		BufferedImage imgCountryside = con.loadImage("countryside.jpeg");
 		BufferedImage imgSchool = con.loadImage("school.png");
@@ -91,17 +80,30 @@ public class midtermproject{
 	}	
 	public static void scene3(Console con){
 		//Mr. Krab asks for player name 
-		
+		String strName;
+		String strLetter;
+		con.println("What is your name");
+		strName = con.readLine();
+		strLetter = strName.substring(0,1);
+		if(strLetter.equalsIgnoreCase("a")||strLetter.equalsIgnoreCase("b")||strLetter.equalsIgnoreCase("c")||strLetter.equalsIgnoreCase("d")||strLetter.equalsIgnoreCase("e")||strLetter.equalsIgnoreCase("f")||strLetter.equalsIgnoreCase("g")||strLetter.equalsIgnoreCase("h")||strLetter.equalsIgnoreCase("i")||strLetter.equalsIgnoreCase("j")||strLetter.equalsIgnoreCase("k")||strLetter.equalsIgnoreCase("l")){
+			scene4(con);
+		}else{
+			scene14(con);
+		}
 	}
 	public static void scene4(Console con){
 		//Spongebob is in chemistry, Patrick explains two labs that player can choose from
 		//Lab 1: Drop sodium metal in water
 		//Lab 2: Mix sodium hydroxide and copper (II) sulfate
+		BufferedImage imgPatrick = con.loadImage("patrick.png");
+		BufferedImage imgBlack = con.loadImage("black.jpg");
+		con.drawImage (imgBlack,0,0);
+		con.drawImage (imgPatrick,1100,200);
 		con.clear();
+		con.setTextColor(Color.WHITE);
 		char chrChemLab;
-		con.drawString("Lab 1: drop sodium metal into water",1300,600);
-		con.drawString("Lab 2: mix sodium hydroxide and copper (II) sulfate",1300,580);
-		con.println("What lab do you want to do");
+		con.drawString("Lab 1: drop sodium metal into water",1000,100);
+		con.drawString("Lab 2: mix sodium hydroxide and copper (II) sulfate",1000,120);
 		con.println("Enter 'a' for lab 1 and 'b' for lab 2");
 		chrChemLab= con.getChar();
 		if(chrChemLab=='a'){
@@ -111,22 +113,27 @@ public class midtermproject{
 			scene6(con);
 		}
 			
-
-		
 	}
 	public static void scene5(Console con){
 		//Spongebob drops sodium metal in water and it explodes 
 		//Patrick says it is unsafe, and player does not pass the lab
-		con.drawString("That is unsafe!",1300,600);
+		BufferedImage imgPatrick = con.loadImage("patrick.png");
+		con.setTextColor(Color.WHITE);
+		con.setDrawColor(Color.WHITE);
+		con.drawImage(imgPatrick, 1100,200);
+		con.drawString("That is unsafe!",1000,100);
 		con.println("You did not pass the lab");
 		
 	}
 	public static void scene6(Console con){
 		//Spongebob mixes copper (II) sulfate and sodium hydroxide, forming a new solid
-		//Patrick asks Spongebob what was produced
+		//Patrick asks Spongebob what was produced		
+		BufferedImage imgPatrick = con.loadImage("patrick.png");
+		con.setTextColor(Color.WHITE);
+		con.drawImage(imgPatrick, 1100,200);
 		String strChemicalFormula;
 		con.println("A new solid is generated!");
-		con.drawString("What solid was produced?",1300,600);
+		con.drawString("What solid was produced?",1000,100);
 		con.println("Enter the chemical formula of the solid produced.");
 		strChemicalFormula = con.readLine();
 		if(strChemicalFormula.equals("Cu(OH)2")){
@@ -138,30 +145,41 @@ public class midtermproject{
 	public static void scene7(Console con){
 		//Patrick tells Spongebob he got the chemical formula wrong
 		//Player does not pass the lab
-		con.drawString("Wrong chemical formula!",1300,600);
+		BufferedImage imgPatrick = con.loadImage("patrick.png");
+		con.setDrawColor(Color.WHITE);
+		con.setTextColor(Color.WHITE);
+		con.drawImage(imgPatrick, 1100,200);
+		con.drawString("Wrong chemical formula!",1000,100);
 		con.println("You did not pass the lab");
 	}
 	public static void scene8(Console con){
 		//Patrick says the chemical formula is correct, Spongebob measures the mass
 		//Patrick asks for the mass measured in grams 
 		con.clear();
+		con.setTextColor(Color.WHITE);
+		con.setDrawColor(Color.WHITE);
+		BufferedImage imgPatrick = con.loadImage("patrick.png");
+		con.drawImage(imgPatrick,1100,200);
 		double dblMass;
 		double dblAmount;
-		con.drawString("Correct!",1300,600);
-		con.drawString("What is the mass of the precipitate",1300,580);
+		con.drawString("Correct!",1300,100);
+		con.drawString("What is the mass of the precipitate",1000,120);
 		con.println("Enter the mass");
 		dblMass = con.readDouble();
 		dblAmount = dblMass/97.57;
 		con.println("The amount is "+dblAmount+"mol");
-		
+		scene9(con);
 	}
 	public static void scene9(Console con){
 		//Patrick calculates and says the amount produced 
 		//Generates a random % yield
 		con.clear();
+		con.setTextColor(Color.WHITE);
+		con.setDrawColor(Color.WHITE);
+		BufferedImage imgPatrick = con.loadImage("patrick.png");
+		con.drawImage(imgPatrick,1100,200);
 		int intYield;
-	
-		con.drawString("What is the % yield",1300,600);
+		con.drawString("What is the % yield",1000,100);
 		intYield = (int)(Math.random()*100);
 		con.println("You % yield is "+intYield+"%");
 		if(intYield<50){
@@ -174,16 +192,21 @@ public class midtermproject{
 		//Patrick says the % yield is bad
 		//Player does not plass lab
 		con.clear();
+		BufferedImage imgPatrick = con.loadImage("patrick.png");
+		con.drawImage(imgPatrick,1100,200);
 		con.println("You did not pass the lab");
-		con.drawString("Your % yield was bad!",1300,600);
+		con.drawString("Your % yield was bad!",1000,100);
 		
 	}
 	public static void scene11(Console con){
 		//Patrick says % yield was good 
 		//Player gets thirsty and wants to drink sodium hydroxide 
+		con.setTextColor(Color.RED);
+		BufferedImage imgPatrick = con.loadImage("patrick.png");
+		con.drawImage(imgPatrick,1100,200);
 		String strDrink;
 		con.clear();
-		con.drawString("Your % yield was good!",1300,600);
+		con.drawString("Your % yield was good!",1000,100);
 		con.println("You are thirsty and you want to drink sodium hydroxide");
 		con.println("Enter 'yes' to drink and 'no' to not drink");
 		strDrink = con.readLine();
@@ -200,35 +223,49 @@ public class midtermproject{
 	public static void scene12(Console con){
 		//Player drinks sodium hydroxide and gets poisoned
 		//Patrick says it is unsafe and the player does not pass lab
+		BufferedImage imgPatrick = con.loadImage("patrick.png");
+		con.drawImage(imgPatrick,1100,200);
+		con.setTextColor(Color.WHITE);
 		con.clear();
 		con.println("The sodium hydroxide poisoned you!");
+		con.drawString("You can't drink that!",1000,100);
 		con.println("You did not pass the lab!");
 		
 	}
 	public static void scene13(Console con){
 		//Patrick congratulates player for not drinking sodium hydroxide 
 		//Player passes lab with 100%
+		BufferedImage imgPatrick = con.loadImage("patrick.png");
+		con.drawImage(imgPatrick,1100,200);
 		con.clear();
+		con.setTextColor(Color.WHITE);
 		con.println("You passed the lab with 100%!");
-		con.drawString("You should never drink in labs!",1300,600);
+		con.drawString("You should never drink in labs! Good job!",1000,100);
 	}
 	public static void scene14(Console con){
 		//Spongebob enters Squidward's physics class and Squidward explains two labs the player can choose from 
 		//Lab 1: drop a 100g ball 1m 
 		//Lab 2: drop a 100kg ball 1m 
 		int intPhyLab;
-		con.drawString("Lab 1: drop 100kg ball 1m",1300,600);
-		con.drawString("Lab 2: drop",1300,580);
+		con.setDrawColor(Color.WHITE);
+		con.setTextColor(Color.WHITE);
+		con.drawString("Lab 1: drop 100kg ball 1m",1000,100);
+		con.drawString("Lab 2: drop",1300,120);
 		con.println("What lab do you want to do");
 		con.println("Enter '1' for lab 1 and '2' for lab 2");
 		intPhyLab = con.readInt();
+		if(intPhyLab ==1){
+			scene15(con);
+		}else if(intPhyLab ==2){
+			scene16(con);
+		}
+		
 	}
 	public static void scene15(Console con){
 		//Spongebob drops the 100kg ball 1m and it breaks
 		//Squidward says it is unsafe and player does not pass lab
-		
 		con.println("The 100kg ball is very heavy and you drop it on your foot!");
-		con.drawString("That is unsafe!",1300,600);
+		con.drawString("That is unsafe!",1000,100);
 		con.println("You did not pass the lab.");
 	}
 	public static void scene16(Console con){
@@ -243,7 +280,7 @@ public class midtermproject{
 		double dblAcceleration;
 		double dblAccelerationRounded;
 		con.println("You measure the time it takes for the ball to fall 1m for 5 trials.");
-		con.drawString("d = vit + 1/2at^2, and we want acceleration",1300,600);
+		con.drawString("d = vit + 1/2at^2, and we want acceleration",1000,100);
 		while(intCount<=5){
 			con.println("Enter the time (s)");
 			dblTime = con.readDouble();
@@ -254,37 +291,80 @@ public class midtermproject{
 		dblAccelerationRounded = Math.round(dblAcceleration);
 		con.clear();
 		con.println("The acceleration is "+dblAccelerationRounded+"m/s^2");
+		scene17(con, dblAccelerationRounded);
 	}
-	public static void scene17(Console con){
+	public static void scene17(Console con, double dblAccelerationRounded){
 		//Squidward asks Spongebob for % error
+		double dblError;
+		double dblErrorRounded;
+		double dblErrorInput;
+		dblError = (Math.abs(dblAccelerationRounded-9.8))/9.8;
+		dblErrorRounded=Math.round(dblError);
+		BufferedImage imgBlack = con.loadImage("black.jpg");
+		con.drawImage(imgBlack,0,0);
+		con.setTextColor(Color.RED);
+		con.println("Enter the % error if the actual acceleration is 9.8");
+		con.drawString("% error is (|exp-act|)/act",1300,100);
+		con.println("Round to nearest whole number");
+		dblErrorInput = con.readDouble();
+		if(dblErrorInput == dblErrorRounded){
+			scene19(con);
+		}else{
+			scene18(con);
+		}
 		
 	}
 	public static void scene18(Console con){
 		//Squidward says Spongebob's % error was wrong 
 		//Player does not pass lab 
-		
+		con.println("You did not pass the lab");
+		con.drawString("% error incorrect!",1000,100);
 	}
 	public static void scene19(Console con){
 		//Squidward says Spongebob's % error was correct 
 		//Squidward asks for the number of sig figs in a number
-		
+		int intSigFigs;
+		con.drawString("The % error is correct!",1000,100);
+		con.println("Enter # of sig figs in 100g");
+		con.drawString("How many sig figs?",1000,120);
+		con.println("Enter # of sig figs in 100g");
+		intSigFigs = con.readInt();
+		if(intSigFigs == 1){
+			scene21(con);
+		}else{
+			scene20(con);
+		}		
 	}
 	public static void scene20(Console con){
 		//Squidward says the player counted sig figs wrong 
 		//Player does not pass lab
+		con.drawString("Sig fig wrong",1000,100);
+		con.println("You did not pass the lab.");
 	}
 	public static void scene21(Console con){
 		//Squidward says the player counted correct # of sig figs 
 		//Squidward asks which factor is ignored for objects in free fall
+		String strFactor;
+		con.drawString("Sig fig correct!",1000,100);
+		con.drawString("When objects are in free fall something is ignored",1000,120);
+		con.println("___ __________ is ignored for objects in free fall.");
+		strFactor = con.readLine();
+		if(strFactor.equalsIgnoreCase("air resistance")){
+			scene23(con);
+		}else{
+			scene22(con);
+		}
 	}
 	public static void scene22(Console con){
 		//Squidward says the player gave a factor that was wrong
 		//Player does not pass lab
-		
+		con.drawString("That isn't a factor!",1000,100);
+		con.println("You did not pass the lab");
 	}
 	public static void scene23(Console con){
 		//Squidward says the factor of air resistance is correct
 		//Player passes lab
-		
+		con.drawString("Good job!",1000,100);
+		con.println("You passed the lab with 100%!");
 	}
 }
