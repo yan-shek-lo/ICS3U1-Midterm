@@ -114,18 +114,21 @@ public class midtermproject{
 		con.clear();
 		con.setTextColor(Color.WHITE);
 		char chrChemLab;
+		chrChemLab = 'c';
 		con.drawString("Lab 1: drop sodium metal into water",250,80);
 		con.drawString("Lab 2: mix sodium hydroxide and copper (II) sulfate",250,140);
 		con.println("Enter 'a' for lab 1 and 'b' for lab 2, anything else and you leave Krusty Krab University");
-		chrChemLab = con.getChar();
+		while(chrChemLab!='a'||chrChemLab!='b'){
+		chrChemLab = con.currentChar();
 		if(chrChemLab=='a'){
 			scene5(con);
 		}
 		else if(chrChemLab=='b'){
 			scene6(con);
 		}else{
-			scene2(con);
+			chrChemLab = con.currentChar();
 		}
+	}
 			
 	}
 	public static void scene5(Console con){
@@ -133,10 +136,29 @@ public class midtermproject{
 		//Patrick says it is unsafe, and player does not pass the lab
 		BufferedImage imgPatrick = con.loadImage("patrick.png");
 		BufferedImage imgClass = con.loadImage("class.png");
-		con.drawImage (imgClass,0,0);
-		con.setTextColor(Color.WHITE);
-		con.setDrawColor(Color.WHITE);
+		BufferedImage imgSpongebob = con.loadImage("spongebob.png");
+		BufferedImage imgRock = con.loadImage("rock.png");
+		BufferedImage imgExplosion = con.loadImage("explosion.png");
+		BufferedImage imgBlack = con.loadImage("black.jpg");
+		BufferedImage imgWater = con.loadImage("water.png");
 		con.drawImage(imgPatrick, 1100,200);
+		int intRockY;
+		for(intRockY = 0;intRockY<550;intRockY++){
+			con.drawImage (imgClass,0,0);
+			con.drawImage (imgSpongebob, 100,100);
+			con.drawImage (imgWater, 640, 520);
+			con.drawImage (imgRock, 640,intRockY);
+			con.repaint();
+			con.sleep(10);
+		}
+		con.sleep(1000);
+		con.drawImage (imgExplosion, 200,200);
+		con.sleep(1000);
+		con.drawImage (imgBlack,0,0);
+		con.drawImage (imgClass,0,0);
+		con.drawImage (imgSpongebob, 100,200);
+		con.drawImage (imgPatrick, 1100,200);
+		con.println("It explodes!");
 		con.drawString("That is unsafe!",250,80);
 		con.println("You did not pass the lab");
 		
