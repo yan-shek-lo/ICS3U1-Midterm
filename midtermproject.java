@@ -153,11 +153,6 @@ public class midtermproject{
 		}
 		con.sleep(1000);
 		con.drawImage (imgExplosion, 200,200);
-		con.sleep(1000);
-		con.drawImage (imgBlack,0,0);
-		con.drawImage (imgClass,0,0);
-		con.drawImage (imgSpongebob, 100,200);
-		con.drawImage (imgPatrick, 1100,200);
 		con.println("It explodes!");
 		con.drawString("That is unsafe!",250,80);
 		con.println("You did not pass the lab");
@@ -168,9 +163,11 @@ public class midtermproject{
 		//Patrick asks Spongebob what was produced		
 		BufferedImage imgPatrick = con.loadImage("patrick.png");
 		BufferedImage imgClass = con.loadImage("class.png");
+		BufferedImage imgBeaker = con.loadImage("beaker.png");
 		con.drawImage (imgClass,0,0);
 		con.setTextColor(Color.WHITE);
 		con.drawImage(imgPatrick, 1100,200);
+		con.drawImage(imgBeaker, 640, 500);
 		String strChemicalFormula;
 		con.println("A new solid is generated!");
 		con.drawString("What solid was produced?",250,80);
@@ -200,11 +197,16 @@ public class midtermproject{
 		//Patrick asks for the mass measured in grams 
 		con.clear();
 		BufferedImage imgClass = con.loadImage("class.png");
+		BufferedImage imgScale = con.loadImage("scale.png");
+		BufferedImage imgSpongebobLook = con.loadImage("spongeboblook.png");
+		BufferedImage imgBeaker = con.loadImage("beaker.png");
 		con.drawImage (imgClass,0,0);
 		con.setTextColor(Color.WHITE);
 		con.setDrawColor(Color.WHITE);
 		BufferedImage imgPatrick = con.loadImage("patrick.png");
 		con.drawImage(imgPatrick,1100,200);
+		con.drawImage(imgScale, 640, 500);
+		con.drawImage(imgBeaker, 640, 700);
 		double dblMass;
 		double dblAmount;
 		con.drawString("Correct!",250,80);
@@ -213,6 +215,7 @@ public class midtermproject{
 		dblMass = con.readDouble();
 		dblAmount = dblMass/97.57;
 		con.println("The amount is "+dblAmount+"mol");
+		con.sleep(5000);
 		scene9(con);
 	}
 	public static void scene9(Console con){
@@ -253,8 +256,11 @@ public class midtermproject{
 		con.drawImage (imgClass,0,0);
 		BufferedImage imgPatrick = con.loadImage("patrick.png");
 		con.drawImage(imgPatrick,1100,200);
+		BufferedImage imgSpongebobSuprised = con.loadImage("spongebobsuprised.png");
+		BufferedImage imgBeaker = con.loadImage("beaker.png");
 		String strDrink;
 		con.clear();
+		con.drawImage (imgBeaker, 640,500);
 		con.drawString("Your % yield was good!",250,80);
 		con.println("You are thirsty and you want to drink sodium hydroxide");
 		con.println("Enter 'yes' to drink and 'no' to not drink");
