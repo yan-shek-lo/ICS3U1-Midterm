@@ -332,8 +332,25 @@ public class midtermproject{
 		//Spongebob drops the 100kg ball 1m and it breaks
 		//Squidward says it is unsafe and player does not pass lab
 		BufferedImage imgClass = con.loadImage("class.png");
+		BufferedImage imgBlack = con.loadImage("black.png");
+		BufferedImage imgSquidward = con.loadImage("squidward.png");
+		BufferedImage imgKg = con.loadImage("kg.png");
+		BufferedImage imgExplosion = con.loadImage("explosion.png");
+		BufferedImage imgSpongebob = con.loadImage("spongebob.png");
+		int intKgY;
 		con.drawImage (imgClass,0,0);
 		con.clear();
+		for(intKgY = 0;intKgY<550;intKgY++){
+			con.drawImage (imgBlack,0,0);
+			con.drawImage (imgClass,0,0);
+			con.drawImage (imgSpongebob, 100,100);
+			con.drawImage (imgSquidward, 1100,200);
+			con.drawImage (imgKg, 640,intKgY);
+			con.repaint();
+			con.sleep(10);
+		}
+		con.drawImage(imgExplosion, 200,200);
+		con.sleep(1000);
 		con.println("The 100kg ball is very heavy and you drop it on your foot!");
 		con.drawString("That is unsafe!",250,80);
 		con.println("You did not pass the lab.");
@@ -342,9 +359,15 @@ public class midtermproject{
 		//Spongebob drops the 100g ball 1m and measures the time for 5 trials 
 		//Squidward explains the formula for calculating acceleration 
 		con.clear();
+		BufferedImage imgBlack = con.loadImage("black.png");
+		BufferedImage imgSpongebob = con.loadImage("spongebob.png");
 		BufferedImage imgClass = con.loadImage("class.png");
+		BufferedImage imgSquidward = con.loadImage("squidward.png");
+		BufferedImage imgTimer = con.loadImage("clock.png");
+		BufferedImage imgMass = con.loadImage("mass.png");
 		con.drawImage (imgClass,0,0);
 		int intCount;
+		int intMassY;
 		intCount = 1;
 		double dblTime;
 		double dblTimeAvg;
@@ -353,6 +376,16 @@ public class midtermproject{
 		double dblAccelerationRounded;
 		con.println("You measure the time it takes for the ball to fall 1m for 5 trials.");
 		con.drawString("d = vit + 1/2at^2, solve for a",250,800);
+		for(intMassY = 0;intMassY<550;intMassY++){
+			con.drawImage (imgBlack,0,0);
+			con.drawImage (imgClass,0,0);
+			con.drawImage (imgSquidward, 1100,200);
+			con.drawImage (imgSpongebob, 100,100);
+			con.drawImage (imgTimer, 640, 520);
+			con.drawImage (imgMass, 640,intMassY);
+			con.repaint();
+			con.sleep(10);
+		}
 		while(intCount<=5){
 			con.println("Enter the time (s)");
 			dblTime = con.readDouble();
