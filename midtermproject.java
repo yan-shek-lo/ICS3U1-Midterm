@@ -1,6 +1,6 @@
 //Story Name: Krusty Krab University
 //Programmer Name: Isaac Lo
-//Version: 
+//Version: 0.9
 import arc.*;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
@@ -8,6 +8,7 @@ import java.awt.Font;
 
 public class midtermproject{
 	public static void main(String[]args){
+		
 		Console con = new Console("Krusty Krab University", 1280, 720);	
 		Font fntOswald = con.loadFont("Oswald-Bold.ttf",36);
 		con.setDrawFont(fntOswald);
@@ -32,7 +33,7 @@ public class midtermproject{
 		con.drawImage(imgSchool, 0,0);
 		int intSpongebobX;
 		BufferedImage imgSpongebob = con.loadImage("spongebob.png");
-		for(intSpongebobX =1300; intSpongebobX >=700; intSpongebobX--){
+		for(intSpongebobX =1300; intSpongebobX >=700; intSpongebobX-=5){
 			con.drawImage(imgCountryside, 0,0);
 			con.drawImage(imgSchool, 0,0);
 			con.drawImage(imgSpongebob,intSpongebobX, 100);
@@ -75,9 +76,9 @@ public class midtermproject{
 			con.drawImage(imgCountryside, 0,0);
 			con.drawImage(imgSchool, 0,0);
 			con.drawImage(imgSpongebob, intSpongebobX, 100);
-			intSpongebobX = intSpongebobX+1;
+			intSpongebobX = intSpongebobX+5;
 			con.repaint();
-			con.sleep(2);
+			con.sleep(10);
 		}
 	}	
 	public static void scene3(Console con){
@@ -146,7 +147,7 @@ public class midtermproject{
 		BufferedImage imgWater = con.loadImage("water.png");
 		con.drawImage(imgPatrick, 1100,200);
 		int intRockY;
-		for(intRockY = 0;intRockY<550;intRockY++){
+		for(intRockY = 0;intRockY<550;intRockY+=5){
 			con.setDrawColor(Color.BLACK);
 			con.fillRect(0,0,1280,720);
 			con.drawImage (imgClass,0,0);
@@ -154,7 +155,7 @@ public class midtermproject{
 			con.drawImage (imgWater, 640, 520);
 			con.drawImage (imgRock, 640,intRockY);
 			con.repaint();
-			con.sleep(2);
+			con.sleep(10);
 		}
 		con.sleep(1000);
 		con.setDrawColor(Color.WHITE);
@@ -222,7 +223,7 @@ public class midtermproject{
 		con.drawImage(imgPatrick,1100,200);
 		con.drawImage(imgSpongebobLook, 100, 300);
 		con.drawImage(imgScale, 640, 500);
-		con.drawImage(imgBeaker, 700, 330);
+		con.drawImage(imgBeaker, 700, 350);
 		double dblMass;
 		double dblAmount;
 		con.drawString("Correct!",250,80);
@@ -378,7 +379,7 @@ public class midtermproject{
 		int intKgY;
 		con.drawImage (imgClass,0,0);
 		con.clear();
-		for(intKgY = 0;intKgY<550;intKgY++){
+		for(intKgY = 0;intKgY<550;intKgY+=5){
 			con.setDrawColor(Color.BLACK);
 			con.fillRect(0,0,1280,720);
 			con.drawImage (imgClass,0,0);
@@ -386,7 +387,7 @@ public class midtermproject{
 			con.drawImage (imgSquidward, 1100,200);
 			con.drawImage (imgKg, 640,intKgY);
 			con.repaint();
-			con.sleep(2);
+			con.sleep(10);
 		}
 		con.drawImage(imgExplosion, 200,200);
 		con.sleep(1000);
@@ -415,7 +416,7 @@ public class midtermproject{
 		double dblAccelerationRounded;
 		con.println("You measure the time it takes for the ball to fall 1m for 5 trials.");
 		con.drawString("d = vit + 1/2at^2, solve for a",250,800);
-		for(intMassY = 0;intMassY<550;intMassY++){
+		for(intMassY = 0;intMassY<550;intMassY+=5){
 			con.setDrawColor(Color.BLACK);
 			con.fillRect(0,0,1280,720);
 			con.setDrawColor(Color.WHITE);
@@ -425,7 +426,7 @@ public class midtermproject{
 			con.drawImage (imgTimer, 640, 520);
 			con.drawImage (imgMass, 640,intMassY);
 			con.repaint();
-			con.sleep(2);
+			con.sleep(10);
 		}
 		while(intCount<=5){
 			con.println("Enter the time (s)");
@@ -499,8 +500,8 @@ public class midtermproject{
 		con.drawString("The % error is correct!",250,80);
 		con.println("Enter # of sig figs in 100g");
 		con.drawString("How many sig figs?",250,140);
-		con.println("Enter # of sig figs in 100g");
 		intSigFigs = con.readInt();
+		//If the player enters "1" for number of sig figs, they pass and move on, if not they fail 
 		if(intSigFigs == 1){
 			scene21(con);
 		}else{
@@ -510,16 +511,30 @@ public class midtermproject{
 	public static void scene20(Console con){
 		//Squidward says the player counted sig figs wrong 
 		//Player does not pass lab
+		con.setDrawColor(Color.BLACK);
+		con.fillRect(0,0,1280, 720);
+		con.setDrawColor(Color.WHITE);
 		BufferedImage imgClass = con.loadImage("class.png");
 		con.drawImage (imgClass,0,0);
+		BufferedImage imgSpongebob = con.loadImage("spongebob.png");
+		con.drawImage (imgSpongebob, 100,100);
+		BufferedImage imgSquidward = con.loadImage("squidward.png");
+		con.drawImage (imgSquidward, 1100, 200);
 		con.drawString("Sig fig wrong",250,80);
 		con.println("You did not pass the lab.");
 	}
 	public static void scene21(Console con){
 		//Squidward says the player counted correct # of sig figs 
 		//Squidward asks which factor is ignored for objects in free fall
+		con.setDrawColor(Color.BLACK);
+		con.fillRect(0,0,1280, 720);
+		con.setDrawColor(Color.WHITE);
 		BufferedImage imgClass = con.loadImage("class.png");
 		con.drawImage (imgClass,0,0);
+		BufferedImage imgSpongebob = con.loadImage("spongebob.png");
+		con.drawImage (imgSpongebob, 100,100);
+		BufferedImage imgSquidward = con.loadImage("squidward.png");
+		con.drawImage (imgSquidward, 1100, 200);
 		String strFactor;
 		con.clear();
 		con.drawString("Sig fig correct!",250,80);
@@ -535,16 +550,30 @@ public class midtermproject{
 	public static void scene22(Console con){
 		//Squidward says the player gave a factor that was wrong
 		//Player does not pass lab
+		con.setDrawColor(Color.BLACK);
+		con.fillRect(0,0,1280, 720);
+		con.setDrawColor(Color.WHITE);
 		BufferedImage imgClass = con.loadImage("class.png");
 		con.drawImage (imgClass,0,0);
+		BufferedImage imgSpongebob = con.loadImage("spongebob.png");
+		con.drawImage (imgSpongebob, 100,100);
+		BufferedImage imgSquidward = con.loadImage("squidward.png");
+		con.drawImage (imgSquidward, 1100, 200);
 		con.drawString("That isn't a factor!",250,80);
 		con.println("You did not pass the lab");
 	}
 	public static void scene23(Console con){
 		//Squidward says the factor of air resistance is correct
 		//Player passes lab
+		con.setDrawColor(Color.BLACK);
+		con.fillRect(0,0,1280, 720);
+		con.setDrawColor(Color.WHITE);
 		BufferedImage imgClass = con.loadImage("class.png");
 		con.drawImage (imgClass,0,0);
+		BufferedImage imgSpongebob = con.loadImage("spongebob.png");
+		con.drawImage (imgSpongebob, 100,100);
+		BufferedImage imgSquidward = con.loadImage("squidward.png");
+		con.drawImage (imgSquidward, 1100, 200);
 		con.drawString("Good job!",250,80);
 		con.println("You passed the lab with 100%!");
 	}
