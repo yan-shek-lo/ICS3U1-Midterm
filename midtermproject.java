@@ -8,7 +8,7 @@ import java.awt.Font;
 
 public class midtermproject{
 	public static void main(String[]args){
-		
+		//Load font, console and move into scene 1 method 
 		Console con = new Console("Krusty Krab University", 1280, 720);	
 		Font fntOswald = con.loadFont("Oswald-Bold.ttf",36);
 		con.setDrawFont(fntOswald);
@@ -16,7 +16,7 @@ public class midtermproject{
 
 	}
 	public static void scene1(Console con){
-		//Spongebob (player) goes to Krusty Krab University
+		//Spongebob (player) goes to Krusty Krab University in the countryside
 		String strChoice;
 		strChoice = "";
 		int intMouseX;
@@ -33,6 +33,7 @@ public class midtermproject{
 		con.drawImage(imgSchool, 0,0);
 		int intSpongebobX;
 		BufferedImage imgSpongebob = con.loadImage("spongebob.png");
+		//Animation loop: spongebob moves from right to left
 		for(intSpongebobX =1300; intSpongebobX >=700; intSpongebobX-=5){
 			con.drawImage(imgCountryside, 0,0);
 			con.drawImage(imgSchool, 0,0);
@@ -47,6 +48,7 @@ public class midtermproject{
 		con.setDrawColor(Color.WHITE);
 		con.drawString("  yes  ",10,100);
 		con.drawString("  no   ",1010,100);
+		//Mouse choice loop: takes current mouse x and y data as well as mouse button data until "yes" or "no" rectangles have been clicked
 		while(!strChoice.equals("true")||!strChoice.equals("false")){
 			intMouseX = con.currentMouseX();
 			intMouseY = con.currentMouseY();
@@ -70,6 +72,7 @@ public class midtermproject{
 		intSpongebobX = 700;
 		con.clear();
 		con.println("You have quit Krusty Krab University!");
+		//Animation loop: spongebob moves from left to right
 		while(intSpongebobX<=1300){
 			BufferedImage imgCountryside = con.loadImage("countryside.jpeg");
 			BufferedImage imgSchool = con.loadImage("school.png");
@@ -82,6 +85,7 @@ public class midtermproject{
 		}
 	}	
 	public static void scene3(Console con){
+		//Player is standing in a hallway and sees Mr Krab
 		//Mr. Krab asks for player name 
 		BufferedImage imgHall = con.loadImage("hall.png");
 		BufferedImage imgKrab = con.loadImage("mrkrab.png");
@@ -98,8 +102,10 @@ public class midtermproject{
 		con.println("What is your name");
 		strName = con.readLine();
 		strLetter = strName.substring(0,1);
+		//If player name is between a and l, player goes to chemistry
 		if(strLetter.equalsIgnoreCase("a")||strLetter.equalsIgnoreCase("b")||strLetter.equalsIgnoreCase("c")||strLetter.equalsIgnoreCase("d")||strLetter.equalsIgnoreCase("e")||strLetter.equalsIgnoreCase("f")||strLetter.equalsIgnoreCase("g")||strLetter.equalsIgnoreCase("h")||strLetter.equalsIgnoreCase("i")||strLetter.equalsIgnoreCase("j")||strLetter.equalsIgnoreCase("k")||strLetter.equalsIgnoreCase("l")){
 			scene4(con);
+		//If player name is anything else, player goes to physics 
 		}else{
 			scene14(con);
 		}
@@ -122,13 +128,17 @@ public class midtermproject{
 		con.drawString("Lab 1: drop sodium metal into water",250,80);
 		con.drawString("Lab 2: mix sodium hydroxide and copper (II) sulfate",250,140);
 		con.println("Enter 'a' for lab 1 and 'b' for lab 2, anything else and you leave Krusty Krab University");
+		//While loop to make the player keep pressing characters until "a" or "b" is pressed
 		while(chrChemLab!='a'||chrChemLab!='b'){
 		chrChemLab = con.currentChar();
+		//If "a" key is pressed 
 		if(chrChemLab=='a'){
 			scene5(con);
 		}
+		//If "b" key is pressed 
 		else if(chrChemLab=='b'){
 			scene6(con);
+		//If neither "a" or "b" is pressed
 		}else{
 			chrChemLab = con.currentChar();
 		}
@@ -147,6 +157,7 @@ public class midtermproject{
 		BufferedImage imgWater = con.loadImage("water.png");
 		con.drawImage(imgPatrick, 1100,200);
 		int intRockY;
+		//Animation loop: Rock moves from top to bottom 
 		for(intRockY = 0;intRockY<550;intRockY+=5){
 			con.setDrawColor(Color.BLACK);
 			con.fillRect(0,0,1280,720);
@@ -187,8 +198,10 @@ public class midtermproject{
 		con.drawString("CuSO4 + 2NaOH = ___ (s) +Na2SO4",250,140);
 		con.println("Enter the chemical formula of the solid produced.");
 		strChemicalFormula = con.readLine();
+		//If player enters the chemical formula "Cu(OH)2"
 		if(strChemicalFormula.equals("Cu(OH)2")){
 			scene8(con);
+		//If player enters anything else
 		}else{
 			scene7(con);
 		}
@@ -254,8 +267,10 @@ public class midtermproject{
 		intYield = (int)(Math.random()*100);
 		con.println("Your % yield is "+intYield+"%");
 		con.sleep(5000);
+		//If randomly generated yield is below 50
 		if(intYield<50){
 			scene10(con);
+		//If randomly generated yield is any other number 
 		}else{
 			scene11(con);
 		}
@@ -298,11 +313,15 @@ public class midtermproject{
 		con.println("You are thirsty and you want to drink sodium hydroxide");
 		con.println("Enter 'yes' to drink and 'no' to not drink");
 		strDrink = con.readLine();
+		//If player enters "yes" 
 		if(strDrink.equalsIgnoreCase("yes")){
 			scene12(con);
+		//If player enters "no"
 		}else if(strDrink.equalsIgnoreCase("no")){
 			scene13(con);
+		//If player enters neither "yes" nor "no"
 		}else{
+			con.clear();
 			con.println("Enter 'yes' to drink and 'no' to not drink");
 			strDrink = con.readLine();
 		}
@@ -340,6 +359,8 @@ public class midtermproject{
 		con.setTextColor(Color.WHITE);
 		con.println("You passed the lab with 100%!");
 		con.drawString("You should never drink in labs! Good job!",250,80);
+		con.sleep(10000);
+		con.closeConsole();
 	}
 	public static void scene14(Console con){
 		//Spongebob enters Squidward's physics class and Squidward explains two labs the player can choose from 
@@ -350,6 +371,7 @@ public class midtermproject{
 		con.repaint();
 		con.clear();
 		int intPhyLab;
+		intPhyLab = 0;
 		con.setDrawColor(Color.WHITE);
 		con.setTextColor(Color.WHITE);
 		BufferedImage imgClass = con.loadImage("class.png");
@@ -359,12 +381,17 @@ public class midtermproject{
 		con.drawString("Lab 1: drop 100kg ball 1m",250,80);
 		con.drawString("Lab 2: drop 100g ball 1m",250,140);
 		con.println("What lab do you want to do");
-		con.println("Enter '1' for lab 1 and '2' for lab 2");
-		intPhyLab = con.readInt();
-		if(intPhyLab ==1){
-			scene15(con);
-		}else if(intPhyLab ==2){
-			scene16(con);
+		//Choice loop: whhile intPhyLab does not equal 1 or 2
+		while(intPhyLab!=1||intPhyLab!=2){
+			con.println("Enter '1' for lab 1 and '2' for lab 2");
+			intPhyLab = con.readInt();
+			//If player enters "1"
+			if(intPhyLab ==1){
+				scene15(con);
+			//If player enters "2"
+			}else if(intPhyLab ==2){
+				scene16(con);
+			}
 		}
 		
 	}
@@ -379,6 +406,7 @@ public class midtermproject{
 		int intKgY;
 		con.drawImage (imgClass,0,0);
 		con.clear();
+		//Ani,ation loop: Kg mass goes from top to bottom 
 		for(intKgY = 0;intKgY<550;intKgY+=5){
 			con.setDrawColor(Color.BLACK);
 			con.fillRect(0,0,1280,720);
@@ -416,6 +444,7 @@ public class midtermproject{
 		double dblAccelerationRounded;
 		con.println("You measure the time it takes for the ball to fall 1m for 5 trials.");
 		con.drawString("d = vit + 1/2at^2, solve for a",250,800);
+		//Animation Loop: mass goes from top to bottom
 		for(intMassY = 0;intMassY<550;intMassY+=5){
 			con.setDrawColor(Color.BLACK);
 			con.fillRect(0,0,1280,720);
@@ -428,6 +457,7 @@ public class midtermproject{
 			con.repaint();
 			con.sleep(10);
 		}
+		//Player keeps entering time values until they have entered 5 time values
 		while(intCount<=5){
 			con.println("Enter the time (s)");
 			dblTime = con.readDouble();
@@ -461,8 +491,10 @@ public class midtermproject{
 		con.drawString("% error is (|exp-act|)/act * 100%",250,80);
 		con.println("Round to nearest whole number");
 		dblErrorInput = con.readDouble();
+		//If the % error the player enters is correct 
 		if(dblErrorInput == dblErrorRounded){
 			scene19(con);
+		//If the % error the player enters is incorrect
 		}else{
 			scene18(con);
 		}
@@ -504,6 +536,7 @@ public class midtermproject{
 		//If the player enters "1" for number of sig figs, they pass and move on, if not they fail 
 		if(intSigFigs == 1){
 			scene21(con);
+		//If the player enters any other number
 		}else{
 			scene20(con);
 		}		
@@ -541,8 +574,10 @@ public class midtermproject{
 		con.drawString("When objects are in free fall something is ignored",250,140);
 		con.println("___ __________ is ignored for objects in free fall.");
 		strFactor = con.readLine();
+		//If the player enters "air resistance"
 		if(strFactor.equalsIgnoreCase("air resistance")){
 			scene23(con);
+		//If the player enters anything else
 		}else{
 			scene22(con);
 		}
@@ -576,5 +611,7 @@ public class midtermproject{
 		con.drawImage (imgSquidward, 1100, 200);
 		con.drawString("Good job!",250,80);
 		con.println("You passed the lab with 100%!");
+		con.sleep(10000);
+		con.closeConsole();
 	}
 }
