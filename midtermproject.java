@@ -134,7 +134,7 @@ public class midtermproject{
 		con.println("Enter 'a' for lab 1 and 'b' for lab 2, anything else and you leave Krusty Krab University");
 		//While loop to make the player keep pressing characters until "a" or "b" is pressed
 		while(chrChemLab!='a'||chrChemLab!='b'){
-		chrChemLab = con.currentChar();
+		chrChemLab = con.getChar();
 		//If "a" key is pressed 
 		if(chrChemLab=='a'){
 			scene5(con);
@@ -144,7 +144,7 @@ public class midtermproject{
 			scene6(con);
 		//If neither "a" or "b" is pressed
 		}else{
-			chrChemLab = con.currentChar();
+			chrChemLab = con.getChar();
 		}
 	}
 			
@@ -308,8 +308,6 @@ public class midtermproject{
 		con.fillRect(0,0,1280,720);
 		con.setDrawColor(Color.WHITE);
 		BufferedImage imgClass = con.loadImage("class.png");
-		BufferedImage imgSpongebob = con.loadImage("spongebob.png");
-		con.drawImage (imgSpongebob, 100,100);
 		con.drawImage (imgClass,0,0);
 		BufferedImage imgPatrick = con.loadImage("patrick.png");
 		con.drawImage(imgPatrick,1100,200);
@@ -340,6 +338,9 @@ public class midtermproject{
 	public static void scene12(Console con){
 		//Player drinks sodium hydroxide and gets poisoned
 		//Patrick says it is unsafe and the player does not pass lab
+		con.setDrawColor(Color.BLACK);
+		con.fillRect(0,0,1280,720);
+		con.setDrawColor(Color.WHITE);
 		BufferedImage imgPatrick = con.loadImage("patrick.png");
 		BufferedImage imgClass = con.loadImage("class.png");
 		con.drawImage (imgClass,0,0);
