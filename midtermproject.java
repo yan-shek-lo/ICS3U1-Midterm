@@ -48,6 +48,7 @@ public class midtermproject{
 		con.setDrawColor(Color.WHITE);
 		con.drawString("  yes  ",10,100);
 		con.drawString("  no   ",1010,100);
+		con.repaint();
 		//Mouse choice loop: takes current mouse x and y data as well as mouse button data until "yes" or "no" rectangles have been clicked
 		while(!strChoice.equals("true")||!strChoice.equals("false")){
 			intMouseX = con.currentMouseX();
@@ -83,6 +84,8 @@ public class midtermproject{
 			con.repaint();
 			con.sleep(10);
 		}
+		con.sleep(10000);
+		con.closeConsole();
 	}	
 	public static void scene3(Console con){
 		//Player is standing in a hallway and sees Mr Krab
@@ -99,6 +102,7 @@ public class midtermproject{
 		con.drawString("Physics",1080,200);
 		String strName;
 		String strLetter;
+		con.clear();
 		con.println("What is your name");
 		strName = con.readLine();
 		strLetter = strName.substring(0,1);
@@ -174,6 +178,8 @@ public class midtermproject{
 		con.println("It explodes!");
 		con.drawString("That is unsafe!",250,80);
 		con.println("You did not pass the lab");
+		con.sleep(10000);
+		con.closeConsole();
 		
 	}
 	public static void scene6(Console con){
@@ -217,6 +223,8 @@ public class midtermproject{
 		con.drawImage(imgPatrick, 1100,200);
 		con.drawString("Wrong chemical formula!",250,80);
 		con.println("You did not pass the lab");
+		con.sleep(10000);
+		con.closeConsole();
 	}
 	public static void scene8(Console con){
 		//Patrick says the chemical formula is correct, Spongebob measures the mass
@@ -289,6 +297,8 @@ public class midtermproject{
 		con.drawImage(imgPatrick,1100,200);
 		con.println("You did not pass the lab");
 		con.drawString("Your % yield was bad!",250,80);
+		con.sleep(10000);
+		con.closeConsole();
 		
 	}
 	public static void scene11(Console con){
@@ -341,6 +351,8 @@ public class midtermproject{
 		con.println("The sodium hydroxide poisoned you!");
 		con.drawString("You can't drink that!",250,80);
 		con.println("You did not pass the lab!");
+		con.sleep(10000);
+		con.closeConsole();
 		
 	}
 	public static void scene13(Console con){
@@ -423,6 +435,8 @@ public class midtermproject{
 		con.println("The 100kg ball is very heavy and you drop it on your foot!");
 		con.drawString("That is unsafe!",250,80);
 		con.println("You did not pass the lab.");
+		con.sleep(10000);
+		con.closeConsole();
 	}
 	public static void scene16(Console con){
 		//Spongebob drops the 100g ball 1m and measures the time for 5 trials 
@@ -514,6 +528,8 @@ public class midtermproject{
 		con.drawImage (imgSquidward, 1100, 200);
 		con.println("You did not pass the lab");
 		con.drawString("% error incorrect!",250,80);
+		con.sleep(10000);
+		con.closeConsole();
 	}
 	public static void scene19(Console con){
 		//Squidward says Spongebob's % error was correct 
@@ -555,6 +571,8 @@ public class midtermproject{
 		con.drawImage (imgSquidward, 1100, 200);
 		con.drawString("Sig fig wrong",250,80);
 		con.println("You did not pass the lab.");
+		con.sleep(10000);
+		con.closeConsole();
 	}
 	public static void scene21(Console con){
 		//Squidward says the player counted correct # of sig figs 
@@ -596,6 +614,8 @@ public class midtermproject{
 		con.drawImage (imgSquidward, 1100, 200);
 		con.drawString("That isn't a factor!",250,80);
 		con.println("You did not pass the lab");
+		con.sleep(10000);
+		con.closeConsole();
 	}
 	public static void scene23(Console con){
 		//Squidward says the factor of air resistance is correct
