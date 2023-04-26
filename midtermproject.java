@@ -131,7 +131,7 @@ public class midtermproject{
 		chrChemLab = 'c';
 		con.drawString("Lab 1: drop sodium metal into water",250,80);
 		con.drawString("Lab 2: mix sodium hydroxide and copper (II) sulfate",250,140);
-		con.println("Enter 'a' for lab 1 and 'b' for lab 2, anything else and you leave Krusty Krab University");
+		con.println("Enter 'a' for lab 1 and 'b' for lab 2");
 		//While loop to make the player keep pressing characters until "a" or "b" is pressed
 		while(chrChemLab!='a'||chrChemLab!='b'){
 		chrChemLab = con.getChar();
